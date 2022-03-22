@@ -1,0 +1,17 @@
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\HabitTracker.exe.config
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\HabitTracker.exe
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\HabitTracker.pdb
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\obj\Debug\HabitTracker.csproj.AssemblyReference.cache
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\obj\Debug\HabitTracker.csproj.SuggestedBindingRedirects.cache
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\obj\Debug\HabitTracker.csproj.CoreCompileInputs.cache
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\obj\Debug\HabitTracker.exe
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\obj\Debug\HabitTracker.pdb
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\EntityFramework.dll
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\System.Data.SQLite.dll
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\EntityFramework.xml
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\bin\Debug\System.Data.SQLite.xml
+C:\Users\meowm\Github\repos\HabitTracker\HabitTracker\obj\Debug\HabitTracker.csproj.CopyComplete
