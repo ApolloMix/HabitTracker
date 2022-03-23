@@ -34,20 +34,34 @@ namespace HabitTracker
                     }
                 }
             }
-            //Intro menu, gets player input
-            MainMenu();
-            string input = GetMenuInput();
 
-            switch(input)
+            while(true)
             {
-                case "A":
-                    GetAddition();
-                    break;
-                case "R":
-                    RemoveItem();
-                    break;
+                //Intro menu, gets player input
+                Console.Clear();
+                MainMenu();
+                string input = GetMenuInput();
+
+
+                switch (input)
+                {
+                    case "A":
+                        GetAddition();
+                        break;
+                    case "R":
+                        RemoveItem();
+                        break;
+                    case "U":
+                        StartUpdate();
+                        break;
+                    case "D":
+                        ShowTable();
+                        string userInput = GetMenuInput();
+                        userInput = null;
+                        break;
+                }
+
             }
-                
         }
         static SQLiteConnection InitializeDatabase()
         {
@@ -66,6 +80,7 @@ namespace HabitTracker
             catch(Exception ex)
             {
                 Console.WriteLine("Connection failed :(");
+                Console.WriteLine(ex.Message);
                 sqlite = null;
                 Environment.Exit(0);
             }
@@ -103,6 +118,7 @@ namespace HabitTracker
             Console.WriteLine();
             Console.WriteLine("Type 'A' to add a habit\n");
             Console.WriteLine("Type 'R' to remove habit\n");
+            Console.WriteLine("Type 'U' to update an entry\n");
             Console.WriteLine("Type 'D' to display all Habits");
         }
 
@@ -142,7 +158,7 @@ namespace HabitTracker
         }
         static void RemoveItem()
         {
-            Console.WriteLine("what would you like to remove from the habit tracker?\n");
+            Console.WriteLine("What would you like to remove from the habit tracker?\n");
 
             ShowTable();
 
@@ -152,6 +168,55 @@ namespace HabitTracker
             string removeFromTable = $@"DELETE FROM Habits WHERE [Habit] = '{input}';";
             command = sqlite.CreateCommand();
             command.CommandText = removeFromTable;
+            command.ExecuteNonQuery();
+        }
+
+        static void StartUpdate()
+        {
+            Console.WriteLine("What would you like to update from the habit tracker?\n");
+            Console.WriteLine("First input the Habit you'd like to edit");
+
+            ShowTable();
+            string habitID = GetUserInput();
+            
+            
+            Console.WriteLine("\nNow, what would you like to edit, the habit, or the quantity?");
+            
+            string choice = GetUserInput();
+
+            if(choice == "habit")
+            {
+                UpdateHabit(habitID);
+            }
+            if(choice == "quantity")
+            {
+                UpdateQuantity(habitID);
+            }
+            
+        }
+
+        static void UpdateHabit(string Id)
+        {
+            Console.WriteLine("What would is the new value?");
+            string newValue = GetUserInput();
+            SQLiteCommand command;
+            string updateHabit = $@"UPDATE Habits 
+                                    SET Habit = '{newValue}'
+                                    WHERE Habit = '{Id}';";
+            command = sqlite.CreateCommand();
+            command.CommandText = updateHabit;
+            command.ExecuteNonQuery();
+        }
+
+        static void UpdateQuantity(string Id)
+        {
+            string newValue = GetUserInput();
+            SQLiteCommand command;
+            string updateHabit = $@"UPDATE Habits 
+                                    SET Quantity = '{newValue}'
+                                    WHERE Habit = '{Id}';";
+            command = sqlite.CreateCommand();
+            command.CommandText = updateHabit;
             command.ExecuteNonQuery();
         }
 
