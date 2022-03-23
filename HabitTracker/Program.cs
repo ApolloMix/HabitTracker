@@ -10,10 +10,13 @@ namespace HabitTracker
 {
     internal class Program
     {
-        static SQLiteConnection sqlite = InitializeDatabase();
+        static SQLiteConnection sqlite;
+        static string databaseFile = @"c:\users\meowm\github\repos\habittracker\db.sqlite";
         static int quantity = 0;
         static void Main(string[] args)
         {
+            CheckForDbFile();
+            sqlite = InitializeDatabase();
             if (sqlite != null)
             {
                 //If the connection is a success, create the Habits table, if the habit table already exists,
@@ -65,19 +68,13 @@ namespace HabitTracker
         }
         static SQLiteConnection InitializeDatabase()
         {
-            string databaseFile= @"c:\users\meowm\github\repos\habittracker\db.sqlite";
-            if (!File.Exists(databaseFile))
-            {
-                File.Create(databaseFile);
-            }
-
             SQLiteConnection connection = new SQLiteConnection($"Data Source= {databaseFile}");
 
             try
             {
                 connection.Open();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Connection failed :(");
                 Console.WriteLine(ex.Message);
@@ -85,6 +82,14 @@ namespace HabitTracker
                 Environment.Exit(0);
             }
             return connection;
+        }
+
+        static void CheckForDbFile()
+        {
+            if (!File.Exists(databaseFile))
+            {
+                File.Create(databaseFile);
+            }
         }
 
         static void CreateTable()
